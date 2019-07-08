@@ -47,21 +47,19 @@
 </template>
 
 <script>
-export default {
-  
-    data () {
-      return {
-        proposals: [
-        {reg_no: 'VICKIE:13/U/144',title:'Energy Saving System for Corporate Computers and Lighting System By Using PIR Sensor',problem_statment:'problemsMost children in Uganda have faced some form of violence – physical, sexual, emotional or domestic. More than 8 million children, 51 per cent of the child population, are believed to be vulnerable. f early Girls in particular are at risk omarriage, teenage pregnancy and female genital mutilation/cutting and child marriages. Although, FGM/C affects only 1.4 per cent of the population in Uganda, it is estimated that it affects about 90 per cent of girls in the 6 districts where FGM/C is practiced (three in Karamoja and three in Eastern Uganda).',abstract:'To design a platform to hold current topics and discussions on child abuse.To provide a hot line for victims which offers crisis intervention, information, and referrals to thousands of emergency, social service, and support resources.To provide a secure connection with victims that is monitored making the conversation confidential. To sensitize children in schools and various communities about the platform and its use.',file:'yes',status:'pending'},
-        {reg_no: '12345',title:'Data communications',problem_statment:'problems',abstract:'no',file:'yes',status:'pending'},
-        {reg_no: '12346',title:'Networking on the moon',problem_statment:'problems',abstract:'no',file:'yes',status:'pending'},
-        {reg_no: '12347',title:'what is wrong with the government',problem_statment:'problems',abstract:'no',file:'yes',status:'pending'}
-        ]
-      }
-    
-    },
+    import axios from 'axios'
+    export default {
+        data() {
+            return {
+                proposals: []
+            }
+        },
+        created() {
+            axios.post('http://127.0.0.1:5000/viewprojects2',
+                { reg_no: "1234" }).then(response => {
+                this.proposals = response.data
+            })
+        }
+    }
      
-    
-   
-}
 </script>
