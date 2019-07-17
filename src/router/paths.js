@@ -33,12 +33,12 @@ export default [
       }
       
       else {
-        next('/dashboard')
+        next()
       }
     },
     children: [
       {
-        path: '',
+        path: '/',
         component: () => import(`@/components/LoginForm.vue`)
       }
     ]
@@ -129,6 +129,14 @@ export default [
           requiresAuth: false
         },
         component: () => import(`@/components/DashViews/Rejected.vue`)
+      },
+      {
+        path: 'logout',
+        meta: {
+          name: 'Log out',
+          requiresAuth: false
+        },
+        component: () => import(`@/components/LoginForm.vue`)
       }
     ]
   }

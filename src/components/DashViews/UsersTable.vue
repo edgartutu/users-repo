@@ -2,7 +2,7 @@
 	<div >
 	
 		<v-container >
-			<v-card>
+			<v-card class="rounded-card">
 				<v-card-text>
 					<v-text-field label="Student1" placeholder="Name" v-model="student1"></v-text-field>
 					<v-text-field label="Reg No" placeholder="Reg No 1" v-model="reg_no1"></v-text-field>
@@ -11,7 +11,7 @@
 					<v-text-field label="Title" placeholder="Title" v-model="title"></v-text-field>
 					<v-text-field label="Problem Statment" placeholder="Problem Statment" v-model="problem_statment"></v-text-field>
 					<v-text-field label="Abstract" placeholder="Abstract" v-model="abstract"></v-text-field>
-					<v-btn flat class="green mx-0" @click="$refs.inputUpload.click()">Upload File</v-btn>
+					<v-btn flat class="purple mx-0" @click="$refs.inputUpload.click()">Upload File</v-btn>
 					<input v-show="false" ref="inputUpload" type="file">
 					<v-btn flat class="green my-5" @click="postproposal()">Submit</v-btn>
 
@@ -49,3 +49,9 @@ import axios from 'axios'
         }
 }
 </script>
+<style>
+.rounded-card{
+    border-radius:50px;
+}
+    
+</style>

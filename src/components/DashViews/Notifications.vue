@@ -1,11 +1,12 @@
 <template>
 	<div >
-    <v-container>
-		
-    <v-layout
-      fill-height
+    <v-container
+	 fill-height
     fluid
     grid-list-xl>
+		
+    <v-layout
+     >
       
     
     <v-flex xs12
@@ -13,14 +14,25 @@
 
 		
 			
-			<v-card >
+			<v-card class="rounded-card" >
+				<v-flex >
 				<v-text-field label="Title" placeholder="Title"></v-text-field>
-				<v-btn flat class="green mx-0" @click="$refs.inputUpload.click()">Upload File</v-btn>
+				</v-flex>
+				<v-flex xs12 sm4 text-xs-center>
+				<v-btn flat class="pink darken-1 " @click="$refs.inputUpload.click()">Upload File</v-btn>
 				<input v-show="false" ref="inputUpload" type="file">
-				<div>
-					<v-btn flat class="green mx-0">Submit</v-btn>
-				</div>
-			</v-card>
+				
+					<v-btn flat class="teal">Submit</v-btn>
+					</v-flex><br>
+					<v-card-text v-for="repo in reports" :key="repo.reg_no">
+					 <div >{{repo.files}}</div>
+					 <div >{{repo.datestamp}}</div>
+
+				</v-card-text>
+				
+			</v-card><br>
+			
+			
 			
 		</v-flex>
      </v-layout>
@@ -32,15 +44,26 @@
 </template>
 
 <script>
-import navbar from '@/components/user/navbar1.vue'
+
+import { Script } from 'vm';
 export default {
-	components:{
-		navbar
-	},
+	
 	data(){
 		return{
+
+			reports:{
+
+			}
 
 		}
 	}
 
 }
+</script>
+<style >
+
+ .rounded-card{
+    border-radius:50px;
+}
+	
+</style>

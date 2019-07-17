@@ -13,8 +13,8 @@
           <v-card
             class="elevation-12">
             <v-toolbar
-              color="green">
-              <v-toolbar-title>Admin </v-toolbar-title>
+              color="green darken-2">
+              <v-toolbar-title style="color:white">Student </v-toolbar-title>
               <v-spacer/>
             </v-toolbar>
             <v-card-text>

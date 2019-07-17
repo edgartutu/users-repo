@@ -15,12 +15,25 @@
 
         <material-card 
         title="Previous Projects"
-        color="red"
+        color="black"
         >
+        <v-text-field
+            v-model="search"
+            append-icon="search"
+            label="Search"
+            single-line
+            hide-details
+          ></v-text-field><br>
+          <v-spacer></v-spacer>
           <v-data-table
             :headers="headers"
             :items="items"
+            :search="search"
+            :rows-per-page-items="rowsPerPageItems"
             hide-actions
+             row
+             wrap
+            class="elevation-1"
           >
             <template
               slot="headerCell"
@@ -53,6 +66,7 @@
 <script>
 export default {
   data: () => ({
+    search: '',
     headers: [
      
       {

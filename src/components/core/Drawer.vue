@@ -1,66 +1,63 @@
 <template>
+  <v-card class="rounded-card">
   <v-navigation-drawer
-    id="app-drawer"
-    v-model="inputValue"
     app
-    blue
-    floating
-    persistent
-    mobile-break-point="991"
-    width="260"
+    v-model="drawer"
+    :mini-variant.sync="mini"
+    hide-overlay
+    stateless
+    class="teal darken-2"
   >
-    <v-img
-      :src="image"
-      height="100%"
-    >
-      <v-layout
-        class="fill-height"
-        tag="v-list"
-        column
-      >
+    <v-toolbar flat class="teal darken-2">
+      <v-list class="pa-0">
         <v-list-tile avatar>
-          <v-list-tile-avatar
-            color="grey"
-          >
-            <v-img
-              :src="logo"
-              height="64"
-              contain
-            />
+          <v-list-tile-avatar>
+            <img src="https://randomuser.me/api/portraits/men/85.jpg">
           </v-list-tile-avatar>
-          <v-list-tile-title class="title">
-            Students 
-          </v-list-tile-title>
+
+          <v-list-tile-content>
+            <v-list-tile-title class="orange--text">John Masereka</v-list-tile-title>
+          </v-list-tile-content>
+
+          <v-list-tile-action>
+            <v-btn
+            fab dark color ="teal"
+              icon
+              @click.stop="mini = !mini"
+            >
+              <v-icon dark>chevron_left</v-icon>
+            </v-btn>
+          </v-list-tile-action>
         </v-list-tile>
-        <v-divider/>
-        <v-list-tile
-          v-if="responsive"
-        >
-          <v-text-field
-            class="purple-input search-input"
-            label="Search..."
-            color="grey"
-          />
-        </v-list-tile>
-        <v-list-tile
+      </v-list>
+    </v-toolbar>
+
+    <v-list class="pt-0" dense>
+      <v-divider></v-divider>
+
+       <v-list-tile
           v-for="(link, i) in links"
           :key="i"
           :to="link.to"
-          :active-class="color"
+          :active-class="small"
           avatar
           class="v-list-item"
+          
         >
-          <v-list-tile-action>
-            <v-icon>{{ link.icon }}</v-icon>
+          <v-list-tile-action >
+            <v-icon >{{ link.icon }}</v-icon>
           </v-list-tile-action>
-          <v-list-tile-title
+          <v-list-tile-title 
+            class="white--text"
             v-text="link.text"
           />
         </v-list-tile>
-      </v-layout>
-    </v-img>
+    </v-list>
   </v-navigation-drawer>
+  </v-card>
 </template>
+  
+
 
 <script>
 // Utilities
@@ -71,10 +68,11 @@ import {
 
 export default {
   data: () => ({
+    
     logo: require('@/assets/img/redditicon.png'),
     links: [
       {
-        to: '/',
+        to: '/dashboard',
         icon: 'mdi-view-dashboard',
         text: 'Dashboard'
       },
@@ -107,19 +105,28 @@ export default {
         to: '/dashboard/notifications',
         icon: 'report',
         text: 'Progress Report'
+      },
+       {
+        to: '/',
+        icon: 'mdi-power',
+        text: 'Log out'
       }
     ],
-    responsive: false
+    responsive: false,
+    drawer:true,
+    mini: true,
+    right: null
   }),
   computed: {
     ...mapState('app', ['image', 'color']),
         inputValue: {
       get () {
         return this.$store.state.app.drawer
+
       },
       set (val) {
         this.setDrawer(val)
-      }
+      },
     },
     items () {
       return this.$t('Layout.View.items')
@@ -146,6 +153,9 @@ export default {
 </script>
 
 <style lang="scss">
+  .rounded-card{
+    border-radius:50px;
+}
   #app-drawer {
     .v-list__tile {
       border-radius: 4px;

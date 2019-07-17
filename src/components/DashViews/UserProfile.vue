@@ -13,7 +13,7 @@
         
          <div class="pendingproposals">
     <navbar/>
-    <h1 class="subheading grey--text">Submitted Proposals</h1>
+    <h4  v-for="proposal in proposals" :key="proposal.status" class="orange--text">{{proposal.status}}</h4>
     <v-container class="my-2">
       <v-expansion-panel>
         <v-expansion-panel-content v-for="proposal in proposals" :key="proposal.reg_no">
@@ -25,11 +25,15 @@
               <h4 class="font-weight-bold">title</h4>
               <div>{{proposal.title}}</div>
               <h4 class="font-weight-bold">problem statment</h4>
-              <div>{{proposal.problem_statment}}</div>
+              <div>{{proposal.problem_statement}}</div>
               <h4 class="font-weight-bold">abstract</h4>
               <div>{{proposal.abstract}}</div>
                <h4 class="font-weight-bold">file</h4>
-              <div>{{proposal.file}}</div>
+              <div>{{proposal.proposal_uploadfile}}</div>
+               <h4 class="font-weight-bold">Students</h4>
+              <div>{{proposal.student}}</div>
+               <h4 class="font-weight-bold">Comment</h4>
+              <div>{{proposal.commet}}</div>
             </v-card-text>
             
           </v-card>
@@ -59,6 +63,8 @@
                 { reg_no: "1234" }).then(response => {
                 this.proposals = response.data
             })
+
+
         }
     }
      

@@ -5,15 +5,15 @@
 			
        <material-card 
         title="Updated Abstract"
-        color="red"
+        color="red lighten-3"
         >
-			<v-card >
+			
 				<div class="font-weight-bold">New Abstract
 				<v-text-field  placeholder="Abstract"></v-text-field>
         </div>
-				<v-btn flat color="success">Submit</v-btn>
+				<v-btn flat class="teal">Submit</v-btn>
 				
-			</v-card>
+			
       </material-card>
 		</v-container>
     </v-flex>

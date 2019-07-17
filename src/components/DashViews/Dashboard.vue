@@ -1,7 +1,7 @@
 <template>
+<v-card class="rounded-card">
   <v-container
-    fill-height
-    fluid
+    
     grid-list-xl>
     <v-layout wrap>
      <v-flex
@@ -9,8 +9,9 @@
         lg12
       >
         <material-card 
-          color="grey"
+          color="deep-orange lighten-1"
           title="Submited Projects"
+           class="rounded-card"
           popout  
         >
           <user/>
@@ -21,8 +22,11 @@
         lg12
       >
         <material-card
-          title="Approved Projects"
-          color="violet">
+          title="New Projects"
+          color="cyan darken-3"
+           class="rounded-card"
+          >
+          
 
           <simple/>
 
@@ -30,6 +34,7 @@
       </v-flex>
     </v-layout>
   </v-container>
+  </v-card>
 </template>
 
 <script>
@@ -194,3 +199,12 @@ export default {
   }
 }
 </script>
+
+<style>
+.rounded-card{
+    border-radius:200px;
+    border-color: brown;
+    
+}
+</style>
+

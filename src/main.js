@@ -23,6 +23,7 @@ import '@mdi/font/css/materialdesignicons.css'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import axios from 'axios'
 
+
 Vue.prototype.$http = axios
 // Sets the default url used by all of this axios instance's requests
 axios.defaults.baseURL = 'http://127.0.0.1:8001/admin/'
@@ -40,6 +41,7 @@ Vue.use(Vuetify, {
   iconfont: 'mdi',
   theme
 })
+
 
 Vue.config.productionTip = false
 
