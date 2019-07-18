@@ -33,7 +33,7 @@ export default [
       }
       
       else {
-        next()
+          next('/dashboard')
       }
     },
     children: [
