@@ -16,7 +16,7 @@
           </v-list-tile-avatar>
 
           <v-list-tile-content>
-            <v-list-tile-title class="orange--text">John Masereka</v-list-tile-title>
+            <v-list-tile-title class="orange--text">{{user}}</v-list-tile-title>
           </v-list-tile-content>
 
           <v-list-tile-action>
@@ -68,7 +68,7 @@ import {
 
 export default {
   data: () => ({
-    
+    user: '',
     logo: require('@/assets/img/redditicon.png'),
     links: [
       {
@@ -107,7 +107,7 @@ export default {
         text: 'Progress Report'
       },
        {
-        to: '/',
+        to: '/dashboard/logout',
         icon: 'mdi-power',
         text: 'Log out'
       }
@@ -132,7 +132,8 @@ export default {
       return this.$t('Layout.View.items')
     }
   },
-  mounted () {
+        mounted() {
+      this.user = localStorage.getItem('user')
     this.onResponsiveInverted()
     window.addEventListener('resize', this.onResponsiveInverted)
   },

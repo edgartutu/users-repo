@@ -6,21 +6,25 @@ export default {
   login ({ commit }, userData) {
     return new Promise((resolve, reject) => {
       commit('auth_request')
-      
-      axios.post('/auth', { username: userData.username, password: userData.password })
+        
+        axios.post('/login-user', { username: userData.username, password: userData.password })
         .then(response => {
-          const token = response.data.access_token
+          
+          const token = response.data.token
           const user = response.data.username
-          console.log(response)
+          
           // storing jwt in localStorage. https cookie is safer place to store
           localStorage.setItem('token', token)
           localStorage.setItem('user', user)
           axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
           // mutation to change state properties to the values passed along
-          commit('auth_success', { token, user })
-          resolve(response)
+            commit('auth_success', { token, user })
+            
+            resolve(response)
+           
         })
-        .catch(err => {
+          .catch(err => {
+
           console.log('login error')
           commit('auth_error')
           localStorage.removeItem('token')
@@ -37,9 +41,9 @@ export default {
     })
   },
   refreshtoken ({ commit }) {
-    axios.get('/refresh')
+    axios.get('/login-user')
       .then(response => {
-        const token = response.data.access_token
+        const token = response.data.token
         localStorage.setItem('token', token)
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
         commit('auth_success', { token })

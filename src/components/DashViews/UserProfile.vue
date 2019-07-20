@@ -55,12 +55,14 @@
     export default {
         data() {
             return {
-                proposals: []
+                proposals: [],
+                reg_no: "",
             }
         },
         created() {
+            this.reg_no = localStorage.getItem('user')
             axios.post('http://127.0.0.1:5000/viewprojects2',
-                { reg_no: "1234" }).then(response => {
+                { reg_no: this.reg_no }).then(response => {
                 this.proposals = response.data
             })
 
