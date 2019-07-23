@@ -22,13 +22,7 @@
       width="500"
     >
       <template v-slot:activator="{ on }">
-        <v-btn
-          color="teal"
-          dark
-          v-on="on"
-        >
-         New Projects
-        </v-btn>
+
       </template>
       <v-card>
         <v-card-title

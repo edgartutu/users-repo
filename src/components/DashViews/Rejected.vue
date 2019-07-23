@@ -87,17 +87,13 @@ export default {
       },
       
     ],
-    items: [
-      {
-        
-        title: 'Energy Saving System for Corporate Computers and Lighting System By Using PIR Sensor ',
-      
-        abstract: 'think sbout it',
-       year: 'coming....',
-      
-      },
-     
-    ]
-  })
+    items: []
+        }),
+        mounted() {
+             axios.get("http://127.0.0.1:5000/filterprevioustopicbytitle").then(response => {
+                this.items = response.data
+                 //console.log(response)
+            })
+        }
 }
 </script>

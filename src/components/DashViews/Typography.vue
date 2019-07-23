@@ -4,14 +4,14 @@
 		<v-container>
 			
        <material-card 
-        title="Updated Abstract"
+        title="Updated Methodology"
         color="red lighten-3"
         >
 			
-				<div class="font-weight-bold">New Abstract
-				<v-text-field  placeholder="Abstract"></v-text-field>
+				<div class="font-weight-bold">New Methodology
+				<v-text-field  placeholder="Methodology" v-model="methodology"></v-text-field>
         </div>
-				<v-btn flat class="teal">Submit</v-btn>
+				<v-btn flat class="teal" @click="update">Submit</v-btn>
 				
 			
       </material-card>
@@ -22,14 +22,24 @@
 
 </template>
 <script>
-
+import axios from 'axios'
 export default {
 	
 	data(){
-		return{
+        return {
+            methodology: '',
+            user: '',
 
 		}
-	}
+	},
+        methodes: {
+            update() {
+                this.user = localStorage.getItem('user')
+                axios.post('http://127.0.0.1:5000/UpdateMethodology', {
+                    'reg_no': this.user, 'methodology': this.methodology
+                })
+            }
+        }
 
 }
 </script>

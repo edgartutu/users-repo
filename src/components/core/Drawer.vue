@@ -94,7 +94,7 @@ export default {
       {
         to: '/dashboard/typography',
         icon: 'mdi-format-font',
-        text: 'Update abstract'
+        text: 'Update Methodology'
       },
       {
         to: '/dashboard/rejected',
